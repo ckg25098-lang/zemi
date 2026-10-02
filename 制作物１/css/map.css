@@ -1,0 +1,507 @@
+/* ====================
+   3D MAPページ
+==================== */
+
+.map-main {
+    width: 100%;
+}
+
+
+/* ====================
+   タイトル
+==================== */
+
+.map-title {
+    text-align: center;
+
+    padding: 70px 20px 40px;
+}
+
+.map-title h1 {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.map-title p {
+    font-size: 18px;
+}
+
+
+/* ====================
+   3Dマップ表示部分
+==================== */
+
+.map-view {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/*
+   Three.jsの表示場所
+*/
+
+#map-container {
+    width: 100%;
+    height: 600px;
+
+    background-color: #e8e8e8;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+/* 操作説明 */
+
+.map-guide {
+    text-align: center;
+
+    padding: 15px;
+}
+
+.map-guide p {
+    display: inline-block;
+
+    margin: 0 10px;
+}
+
+
+/* ====================
+   見どころ
+==================== */
+
+.map-spots {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 80px 0;
+}
+
+.map-spots h2 {
+    text-align: center;
+
+    font-size: 30px;
+
+    margin-bottom: 40px;
+}
+
+
+/* カード */
+
+.map-card-container {
+    display: flex;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.map-card {
+    flex: 1;
+
+    min-width: 200px;
+
+    padding: 25px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    background-color: #fff;
+}
+
+.map-card h3 {
+    margin-bottom: 10px;
+}
+
+
+/* =====================================
+   3D MAPページ
+===================================== */
+
+/* ページ全体 */
+
+.map-main {
+    width: 100%;
+    color: #333;
+    background-color: #fff;
+}
+
+
+/* =====================================
+   ページタイトル
+===================================== */
+
+.map-title {
+    width: 100%;
+    padding: 60px 20px 35px;
+    text-align: center;
+}
+
+.map-title h1 {
+    margin: 0 0 20px;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.map-title p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+}
+
+
+/* =====================================
+   3Dマップ表示エリア
+===================================== */
+
+.map-view {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+#map-container {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    background-color: #e7e9e4;
+    border-radius: 8px;
+    isolation: isolate;
+}
+
+/* Three.jsのCanvas */
+
+#map-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    touch-action: none;
+}
+
+
+/* =====================================
+   操作ガイド
+===================================== */
+
+.map-guide {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+
+    padding: 14px 20px;
+
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+
+    pointer-events: none;
+}
+
+.map-guide p {
+    margin: 5px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #444;
+}
+
+
+/* =====================================
+   建物の説明パネル
+===================================== */
+
+.map-info {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 5;
+
+    width: 320px;
+    max-width: calc(100% - 40px);
+
+    padding: 22px 20px;
+
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.map-info h2 {
+    margin: 0 25px 12px 0;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.map-info p {
+    margin: 0 0 15px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* 観光スポットへのリンク */
+
+#info-link {
+    display: inline-block;
+    padding: 9px 16px;
+
+    color: #fff;
+    background-color: #806344;
+
+    text-decoration: none;
+    font-size: 13px;
+
+    border-radius: 5px;
+
+    transition: background-color 0.3s;
+}
+
+#info-link:hover {
+    background-color: #60482f;
+}
+
+
+/* 説明パネルを閉じるボタン */
+
+#map-info-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #eee;
+    color: #333;
+
+    font-size: 22px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+#map-info-close:hover {
+    background-color: #ddd;
+}
+
+
+/* =====================================
+   視点リセットボタン
+===================================== */
+
+#map-reset {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 5;
+
+    padding: 12px 18px;
+
+    background-color: #fff;
+    color: #333;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    font-size: 13px;
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+    transition: background-color 0.3s;
+}
+
+#map-reset:hover {
+    background-color: #f0f0f0;
+}
+
+
+/* =====================================
+   見どころ
+===================================== */
+
+.map-spots {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 30px;
+}
+
+.map-spots > h2 {
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.map-spots-intro {
+    margin: 0 0 40px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #666;
+}
+
+.map-card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.map-card {
+    padding: 25px 20px;
+
+    background-color: #f8f7f3;
+    border: 1px solid #e5e1d9;
+    border-radius: 8px;
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+.map-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.map-card h3 {
+    margin: 0 0 15px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.map-card p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #666;
+}
+
+
+/* =====================================
+   タブレット
+===================================== */
+
+@media (max-width: 1024px) {
+
+    .map-view {
+        padding: 0 20px;
+    }
+
+    #map-container {
+        height: 600px;
+    }
+
+    .map-card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =====================================
+   スマートフォン
+===================================== */
+
+@media (max-width: 768px) {
+
+    .map-title {
+        padding: 40px 15px 30px;
+    }
+
+    .map-title h1 {
+        font-size: 25px;
+    }
+
+    .map-title p {
+        font-size: 14px;
+    }
+
+    .map-view {
+        padding: 0 10px;
+    }
+
+    #map-container {
+        height: 650px;
+        min-height: 500px;
+        border-radius: 5px;
+    }
+
+    .map-guide {
+        top: 10px;
+        left: 10px;
+        padding: 10px 12px;
+    }
+
+    .map-guide p {
+        font-size: 11px;
+        margin: 3px 0;
+    }
+
+    #map-reset {
+        top: 10px;
+        right: 10px;
+        padding: 10px 12px;
+        font-size: 11px;
+    }
+
+    .map-info {
+        left: 10px;
+        bottom: 10px;
+        width: 280px;
+        max-width: calc(100% - 20px);
+        padding: 18px 15px;
+    }
+
+    .map-info h2 {
+        font-size: 17px;
+    }
+
+    .map-info p {
+        font-size: 13px;
+    }
+
+    .map-spots {
+        padding: 50px 20px;
+    }
+
+    .map-spots > h2 {
+        font-size: 23px;
+    }
+
+    .map-spots-intro {
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+
+    .map-card-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .map-card {
+        padding: 20px;
+    }
+
+}

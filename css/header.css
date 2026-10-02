@@ -1,0 +1,17 @@
+header {
+    justify-content: space-between;
+    background-image: url();
+    background-repeat: repeat;
+}
+
+header {
+    justify-content: space-between;
+}
+
+header .header-taitle {
+    font-size: 30px;
+}
+
+header .header-subtitle {
+    font-size: 20px;
+}

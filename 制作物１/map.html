@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>3D MAP｜豆田町</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/map.css">
+
+    <!-- Three.jsを読み込む設定 -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.179.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.179.0/examples/jsm/"
+        }
+    }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- ====================
+         ヘッダー
+    ==================== -->
+
+    <header>
+
+        <div class="logo">
+
+            <img src="images/logo.png"
+                 alt="豆田町のロゴ">
+
+            <div class="logo-text">
+                <span class="logo-jp">豆田町</span>
+                <span class="logo-en">Mameda Town</span>
+            </div>
+
+        </div>
+
+        <!-- ナビゲーション -->
+        <nav>
+
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="about.html">豆田町について</a></li>
+                <li><a href="spot.html">観光スポット</a></li>
+                <li><a href="gourmet.html">グルメ・お店</a></li>
+                <li><a href="map.html">3Dマップ</a></li>
+                <li><a href="access.html">アクセス</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ====================
+         メイン
+    ==================== -->
+
+    <main class="map-main">
+
+        <!-- ページタイトル -->
+
+        <section class="map-title">
+
+            <h1>豆田町 3D MAP</h1>
+
+            <p>
+                豆田町の町並みを3Dで見てみよう。
+            </p>
+
+        </section>
+
+
+        <!-- ====================
+             3Dマップ
+        ==================== -->
+
+        <section class="map-view">
+
+            <div id="map-container">
+
+                <!-- Three.jsの3Dマップが表示される -->
+
+                <!-- 操作案内 -->
+                <div class="map-guide">
+
+                    <p>
+                        ドラッグ：マップを回転
+                    </p>
+
+                    <p>
+                        ホイール：拡大・縮小
+                    </p>
+
+                    <p>
+                        右ドラッグ：マップを移動
+                    </p>
+
+                    <p>
+                        建物をクリック：施設の説明
+                    </p>
+
+                </div>
+
+
+                <!-- 建物の説明パネル -->
+                <div id="map-info"
+                     class="map-info">
+
+                    <button id="map-info-close"
+                            type="button"
+                            aria-label="説明を閉じる">
+                        ×
+                    </button>
+
+                    <h2 id="info-title">
+                        豆田町 3D MAP
+                    </h2>
+
+                    <p id="info-text">
+                        建物をクリックすると、
+                        観光スポットの説明が表示されます。
+                    </p>
+
+                    <a id="info-link"
+                       href="spot.html">
+                        観光スポットを見る
+                    </a>
+
+                </div>
+
+
+                <!-- 初期視点に戻すボタン -->
+                <button id="map-reset"
+                        type="button">
+                    視点をリセット
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================
+             見どころ
+        ==================== -->
+
+        <section class="map-spots">
+
+            <h2>3D MAPの見どころ</h2>
+
+            <p class="map-spots-intro">
+                豆田町の歴史ある建物や観光スポットを
+                3Dマップで見てみましょう。
+            </p>
+
+            <div class="map-card-container">
+
+                <div class="map-card">
+
+                    <h3>草野本家</h3>
+
+                    <p>
+                        豆田町を代表する歴史的な建物。
+                    </p>
+
+                </div>
+
+
+                <div class="map-card">
+
+                    <h3>薫長酒蔵資料館</h3>
+
+                    <p>
+                        豆田町にある歴史ある酒蔵。
+                    </p>
+
+                </div>
+
+
+                <div class="map-card">
+
+                    <h3>日田醤油 雛御殿</h3>
+
+                    <p>
+                        豆田町の観光スポットのひとつ。
+                    </p>
+
+                </div>
+
+
+                <div class="map-card">
+
+                    <h3>天領日田資料館</h3>
+
+                    <p>
+                        日田の歴史や文化を紹介する資料館。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ====================
+         フッター
+    ==================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <!-- ロゴ・サイト名 -->
+
+            <div class="footer-brand">
+
+                <img src="images/logo.png"
+                     alt="豆田町のロゴ">
+
+                <div class="footer-brand-text">
+
+                    <h2>豆田町</h2>
+
+                    <p>
+                        歴史を歩く、豆田町。
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- サイトメニュー -->
+
+            <div class="footer-menu">
+
+                <h3>サイトメニュー</h3>
+
+                <div class="footer-links">
+
+                    <ul>
+                        <li><a href="index.html">TOP</a></li>
+                        <li><a href="about.html">豆田町について</a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="spot.html">観光スポット</a></li>
+                        <li><a href="gourmet.html">グルメ・お店</a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="map.html">3D MAP</a></li>
+                        <li><a href="access.html">アクセス</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- コピーライト -->
+
+        <div class="footer-bottom">
+
+            <p>
+                豆田町の歴史と魅力を見つけよう。
+            </p>
+
+            <p>
+                © 2026 豆田町の紹介Webサイト
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Three.js -->
+    <script type="module" src="js/map.js"></script>
+
+</body>
+
+</html>
