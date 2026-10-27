@@ -400,6 +400,7 @@ const touristSpots = [
         roofColor: 0x484848,
 
         link: "spot.html"
+
     },
 
     {
@@ -550,10 +551,18 @@ function makeSpot(data) {
 // 14. 観光スポットを配置
 // ========================================
 
+
+const glbSpotIds = [
+    "kusano",
+    "kuncho",
+    "rekishi",
+    "nihonmarukan"
+];
+
 touristSpots.forEach((spot) => {
-
-    makeSpot(spot);
-
+    if (!glbSpotIds.includes(spot.id)) {
+        makeSpot(spot);
+    }
 });
 
 
@@ -736,31 +745,52 @@ function loadSpotGLB(
     data,
     scale = 1
 ) {
-
     loader.load(
-
         file,
 
         (gltf) => {
+            console.log("GLB読み込み成功:", file);
 
             const model = gltf.scene;
 
-            model.position.set(
-                data.x,
-                0,
-                data.z
-            );
+            // 建物の向きを2パターンに分ける（Y軸）
+            if (data.id === "kuncho") {
+                // パターン②：薫長酒蔵資料館
+                model.rotation.y = Math.PI / 2;
+            } else {
+                // パターン①：それ以外の建物
+                model.rotation.y = -Math.PI / 2;
+            }
 
+            // モデルの大きさを設定
             model.scale.setScalar(scale);
 
+            // モデルの形状と位置を更新
+            model.position.set(0, 0, 0);
+            model.updateMatrixWorld(true);
 
-            // モデル内のメッシュに
-            // 施設情報を設定
+            // 建物全体の大きさと中心を取得
+            const box = new THREE.Box3().setFromObject(model);
+            const size = box.getSize(new THREE.Vector3());
+            const center = box.getCenter(new THREE.Vector3());
 
+            console.log("建物のサイズ:", size);
+            console.log("建物の中心:", center);
+            console.log("建物の高さ:", size.y);
+
+            // 建物の中心を指定位置に合わせ、底面を地面に合わせる
+            model.position.set(
+                data.x - center.x,
+                -box.min.y,
+                data.z - center.z
+            );
+
+            model.updateMatrixWorld(true);
+
+
+            // モデル内のメッシュに施設情報を設定
             model.traverse((child) => {
-
                 if (child.isMesh) {
-
                     child.userData.name =
                         data.name;
 
@@ -771,30 +801,23 @@ function loadSpotGLB(
                         data.link;
 
                     clickableObjects.push(child);
-
                 }
-
             });
 
-
-            scene.add(model);
-
+            // マップ全体のグループに追加
+            mapGroup.add(model);
         },
 
         undefined,
 
         (error) => {
-
             console.error(
                 "GLBの読み込みエラー:",
                 file,
                 error
             );
-
         }
-
     );
-
 }
 
 
@@ -802,21 +825,59 @@ function loadSpotGLB(
 // 18. BlenderのGLBを使用する場合
 // ========================================
 
-// Blenderで作ったモデルが完成したら、
-// 該当施設の makeSpot() を外して、
-// 以下のようにGLBを読み込みます。
+console.log("GLB読み込み処理を開始");
 
-/*
-const kusano = touristSpots.find(
-    spot => spot.id === "kusano"
+// 豆田まちづくり歴史交流館
+const machizukuri = touristSpots.find(
+    (spot) => spot.id === "rekishi"
 );
 
-loadSpotGLB(
-    "models/kusano.glb",
-    kusano,
-    1
+console.log("交流館データ:", machizukuri);
+
+if (machizukuri) {
+    loadSpotGLB(
+        "models/mamedamachizukuri.glb",
+        machizukuri,
+        8
+    );
+} else {
+    console.error("rekishi が見つかりません");
+}
+
+// 日本丸館
+const nihonmarukan = touristSpots.find(
+    (spot) => spot.id === "nihonmarukan"
 );
-*/
+
+console.log("日本丸館データ:", nihonmarukan);
+
+if (nihonmarukan) {
+    loadSpotGLB(
+        "models/nihonmarukan.glb",
+        nihonmarukan,
+        8
+    );
+} else {
+    console.error("nihonmarukan が見つかりません");
+}
+
+// 薫長酒蔵資料館
+const kuncho = touristSpots.find(
+    (spot) => spot.id === "kuncho"
+);
+
+console.log("薫長酒蔵資料館データ:", kuncho);
+
+if (kuncho) {
+    loadSpotGLB(
+        "models/kuncho.glb",
+        kuncho,
+        8
+    );
+} else {
+    console.error("kuncho が見つかりません");
+}
+
 
 
 // ========================================

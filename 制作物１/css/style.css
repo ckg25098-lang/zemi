@@ -1,7 +1,6 @@
-
-/* ====================
-   全体
-==================== */
+/* ========================================
+   1. 全体・共通設定
+======================================== */
 
 * {
     box-sizing: border-box;
@@ -16,45 +15,50 @@ body {
 }
 
 img {
+    display: block;
     max-width: 100%;
+    height: auto;
+}
+
+main {
+    width: 100%;
+}
+
+a {
+    color: inherit;
 }
 
 
-/* ====================
-   ヘッダー
-==================== */
+/* ========================================
+   2. ヘッダー
+======================================== */
 
 header {
     width: 100%;
-    height: 80px;
-
+    min-height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    gap: 20px;
     padding: 0 5%;
-
     background-color: #fff;
     border-bottom: 1px solid #ddd;
 }
 
-/* ロゴ全体 */
+/* ロゴ */
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 }
-
-/* ロゴ画像 */
 
 .logo img {
     width: 50px;
     height: 50px;
     object-fit: contain;
 }
-
-/* ロゴの文字部分 */
 
 .logo-text {
     display: flex;
@@ -63,8 +67,6 @@ header {
     line-height: 1.2;
 }
 
-/* 豆田町 */
-
 .logo-jp {
     font-size: 28px;
     font-weight: bold;
@@ -72,14 +74,12 @@ header {
     letter-spacing: 3px;
 }
 
-/* Mameda Town */
-
 .logo-en {
+    margin-top: 4px;
     font-family: Georgia, serif;
     font-size: 11px;
     color: #7A5C43;
     letter-spacing: 1.5px;
-    margin-top: 4px;
 }
 
 
@@ -89,36 +89,64 @@ header {
 
 nav ul {
     display: flex;
-    list-style: none;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 25px;
     padding: 0;
+    list-style: none;
 }
 
 nav li {
-    margin-left: 25px;
+    margin: 0;
 }
 
 nav a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
     color: #333;
     text-decoration: none;
+    transition: color 0.3s;
 }
+
+/* カーソルを合わせたとき */
 
 nav a:hover {
-    opacity: 0.6;
+    color: #A94F32;
 }
 
+/* 下線 */
 
-/* ====================
-   メイン
-==================== */
-
-main {
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
     width: 100%;
+    height: 2px;
+    background-color: #A94F32;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s;
 }
 
 
-/* ====================
-   TOP画像
-==================== */
+/* 現在開いているページ */
+
+nav a[aria-current="page"] {
+    color: #A94F32;
+}
+
+nav a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+
+/* ========================================
+   3. TOPページ
+======================================== */
+
+/* メイン画像 */
 
 .hero {
     position: relative;
@@ -133,106 +161,94 @@ main {
     object-fit: cover;
 }
 
-/* 画像の上に表示する文字 */
+/* 画像上の文字 */
 
 .hero-text {
     position: absolute;
-    left: 10%;
     top: 50%;
+    left: 10%;
     transform: translateY(-50%);
-    color: white;
+    color: #fff;
 }
 
 .hero-text h1 {
-    font-size: 42px;
     margin-bottom: 15px;
+    font-size: 42px;
 }
 
 .hero-text p {
-    font-size: 18px;
     margin-bottom: 25px;
+    font-size: 18px;
 }
 
-
-/* ====================
-   ボタン
-==================== */
+/* 共通ボタン */
 
 .button {
     display: inline-block;
     padding: 10px 25px;
-
-    color: white;
+    color: #fff;
     background-color: #555;
-
     text-decoration: none;
     border-radius: 5px;
+    transition: opacity 0.3s;
 }
 
 .button:hover {
     opacity: 0.7;
 }
 
-
-/* ====================
-   各セクション
-==================== */
+/* 共通セクション */
 
 .content-section {
     width: 90%;
     max-width: 1100px;
-
     margin: 0 auto;
     padding: 80px 0;
 }
 
 .content-section h2 {
-    text-align: center;
-    font-size: 30px;
     margin-bottom: 40px;
+    font-size: 30px;
+    text-align: center;
 }
 
-
-/* ====================
-   豆田町について
-==================== */
+/* 豆田町についての紹介 */
 
 .about-content {
     display: flex;
-    gap: 40px;
     align-items: center;
+    gap: 40px;
 }
 
 .image-box,
 .text-box {
-    width: 50%;
+    flex: 1;
+    min-width: 0;
 }
 
 .image-box img {
     width: 100%;
-    display: block;
+    height: auto;
 }
 
 .text-box p {
     margin-bottom: 25px;
 }
 
-
-/* ====================
-   カード
-==================== */
+/* 観光スポットなどのカード */
 
 .card-container {
     display: flex;
-    gap: 25px;
     justify-content: center;
+    gap: 25px;
 }
 
 .card {
-    width: 33.333%;
-    border: 1px solid #ddd;
+    flex: 1;
+    min-width: 0;
     padding-bottom: 20px;
-    background-color: white;
+    background-color: #fff;
+    border: 1px solid #ddd;
 }
 
 .card img {
@@ -249,26 +265,23 @@ main {
     margin: 0 15px;
 }
 
-
-/* ====================
-   中央揃え
-==================== */
+/* 中央揃え */
 
 .center {
-    text-align: center;
     margin-top: 30px;
+    text-align: center;
 }
 
 
-/* ====================
-   3D MAP
-==================== */
+/* ========================================
+   4. TOPページの3Dマップ紹介
+======================================== */
 
 .map-section {
-    background-color: #f5f5f5;
     max-width: none;
-    padding-left: 5%;
     padding-right: 5%;
+    padding-left: 5%;
+    background-color: #f5f5f5;
 }
 
 .map-content {
@@ -278,7 +291,6 @@ main {
 .map-content img {
     width: 70%;
     max-width: 700px;
-    display: block;
     margin: 0 auto 20px;
 }
 
@@ -287,14 +299,15 @@ main {
 }
 
 
-/* ====================
-   アクセス
-==================== */
+/* ========================================
+   5. TOPページのアクセス紹介
+======================================== */
 
 .access-container {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    flex-wrap: wrap;
+    gap: 40px 100px;
     margin-bottom: 30px;
 }
 
@@ -305,9 +318,8 @@ main {
 .access-item img {
     width: 80px;
     height: 80px;
-    object-fit: contain;
-    display: block;
     margin: 0 auto 10px;
+    object-fit: contain;
 }
 
 .access-item p {
@@ -315,54 +327,44 @@ main {
 }
 
 
-/* ====================
-   フッター全体
-==================== */
+/* ========================================
+   6. フッター
+======================================== */
 
 .site-footer {
     width: 100%;
-    background-color: #F5F1E8;
-    color: #4A3526;
     padding: 40px 5% 0;
+    color: #4A3526;
+    background-color: #F5F1E8;
 }
-
-/* フッターの内側 */
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* ====================
-   フッター ロゴ・サイト名
-==================== */
+/* ロゴ・サイト名 */
 
 .footer-brand {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 0;
     padding-bottom: 30px;
     border-bottom: 1px solid #C8AD91;
 }
-
-/* ロゴ画像 */
 
 .footer-brand img {
     width: 65px;
     height: 65px;
     object-fit: contain;
+    flex-shrink: 0;
 }
-
-/* 文字部分 */
 
 .footer-brand-text {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-
-/* 豆田町 */
 
 .footer-brand-text h2 {
     font-family: "Noto Serif JP", serif;
@@ -371,60 +373,45 @@ main {
     color: #4A3526;
 }
 
-/* キャッチコピー */
-
 .footer-brand-text p {
     font-size: 13px;
     color: #7A5C43;
 }
 
-
-/* ====================
-   フッター メニュー
-==================== */
+/* フッターメニュー */
 
 .footer-menu {
     padding: 30px 0;
     border-bottom: 1px solid #C8AD91;
 }
 
-/* メニュー見出し */
-
 .footer-menu h3 {
+    margin-bottom: 15px;
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 15px;
 }
-
-/* メニューを3列にする */
 
 .footer-links {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 15px 25px;
 }
 
-/* リスト */
-
 .footer-links ul {
-    list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .footer-links li {
     margin-bottom: 8px;
 }
 
-/* メニューリンク */
-
 .footer-links a {
     color: #4A3526;
-    text-decoration: none;
     font-size: 14px;
+    text-decoration: none;
 }
-
-/* リンクの先頭にマーク */
 
 .footer-links a::before {
     content: "›";
@@ -432,59 +419,333 @@ main {
     color: #7A5C43;
 }
 
-/* マウスを乗せたとき */
-
 .footer-links a:hover {
     color: #B08050;
 }
 
-
-/* ====================
-   フッター下部
-==================== */
+/* コピーライト */
 
 .footer-bottom {
     max-width: 1200px;
     margin: 0 auto;
-
-    text-align: center;
     padding: 20px 0;
-
     color: #7A5C43;
     font-size: 12px;
+    text-align: center;
 }
-
-/* 下部の段落 */
 
 .footer-bottom p {
     margin-bottom: 5px;
 }
 
 
-/* ====================
-   スマートフォン
-==================== */
+/* ========================================
+   7. 豆田町についてページ
+======================================== */
+
+/* ページタイトル */
+
+.about-page-title,
+.access-page-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: #fff;
+    border-bottom: 1px solid #C8AD91;
+}
+
+.about-page-title h1,
+.access-page-title h1 {
+    color: #4A3526;
+    font-size: 32px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* 各セクション */
+
+.about-section {
+    padding: 40px 5%;
+    border-bottom: 1px solid #C8AD91;
+}
+
+.about-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* 左右を反転する場合 */
+
+.about-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 説明文 */
+
+.about-text {
+    flex: 11;
+    min-width: 0;
+}
+
+.about-text h2 {
+    margin-bottom: 15px;
+    color: #4A3526;
+    font-size: 26px;
+    font-weight: normal;
+}
+
+.about-text p {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* 写真 */
+
+.about-image {
+    flex: 9;
+    min-width: 0;
+    height: 240px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 町並みの特徴 */
+
+.section-heading {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    color: #4A3526;
+    font-size: 26px;
+    font-weight: normal;
+}
+
+.about-intro {
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* 特徴のカード */
+
+.feature-container {
+    display: flex;
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    flex: 1;
+    min-width: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.feature-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.feature-card h3 {
+    padding: 15px 15px 5px;
+    color: #4A3526;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.feature-card p {
+    padding: 0 15px 20px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* 観光スポットへのボタン */
+
+.about-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: #4A3526;
+    background-color: #fff;
+    border: 1px solid #4A3526;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.about-button:hover {
+    color: #fff;
+    background-color: #4A3526;
+}
+
+
+/* ========================================
+   8. アクセスページ
+======================================== */
+
+/* 地図 */
+
+.access-map-section {
+    padding: 30px 5%;
+    background-color: #F5F1E8;
+}
+
+.access-map {
+    max-width: 1100px;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.access-map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* 電車・バス・車 */
+
+.access-method-section {
+    padding: 20px 5%;
+    background-color: #fff;
+}
+
+.access-method {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px 5%;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 左側：アイコンとタイトル */
+
+.access-method-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 35;
+    min-width: 0;
+}
+
+.access-icon {
+    flex-shrink: 0;
+    font-size: 38px;
+}
+
+.access-method-title h2 {
+    color: #4A3526;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+/* 右側：説明文 */
+
+.access-method-text {
+    flex: 65;
+    min-width: 0;
+}
+
+.access-method-text p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* 駐車場 */
+
+.parking-section {
+    padding: 30px 5%;
+    background-color: #fff;
+}
+
+.parking-heading {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    color: #4A3526;
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.parking-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.parking-image {
+    flex: 4;
+    min-width: 0;
+    height: 200px;
+}
+
+.parking-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.parking-info {
+    flex: 6;
+    min-width: 0;
+}
+
+.parking-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.parking-item h3 {
+    color: #4A3526;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.parking-item p {
+    font-size: 14px;
+}
+
+
+/* ========================================
+   9. スマートフォン対応
+======================================== */
 
 @media screen and (max-width: 768px) {
 
     /* ヘッダー */
 
     header {
-        height: auto;
         flex-direction: column;
-        padding: 20px;
         gap: 15px;
+        padding: 20px;
     }
-
-    /* ナビゲーション */
 
     nav ul {
-        flex-wrap: wrap;
         justify-content: center;
-    }
-
-    nav li {
-        margin: 5px 10px;
+        gap: 10px 20px;
     }
 
     /* TOP画像 */
@@ -494,6 +755,7 @@ main {
     }
 
     .hero-text {
+        right: 5%;
         left: 5%;
     }
 
@@ -505,38 +767,49 @@ main {
         font-size: 16px;
     }
 
-    /* 豆田町について */
+    /* TOPページの各セクション */
 
-    .about-content {
+    .content-section {
+        padding: 50px 0;
+    }
+
+    .content-section h2 {
+        margin-bottom: 25px;
+        font-size: 25px;
+    }
+
+    .about-content,
+    .card-container {
         flex-direction: column;
+        gap: 25px;
     }
 
     .image-box,
-    .text-box {
-        width: 100%;
-    }
-
-    /* カード */
-
-    .card-container {
-        flex-direction: column;
-    }
-
+    .text-box,
     .card {
         width: 100%;
+        flex: auto;
     }
 
-    /* 3D MAP */
+    /* 3Dマップ紹介 */
 
     .map-content img {
         width: 100%;
     }
 
-    /* アクセス */
+    /* アクセス紹介 */
 
     .access-container {
         gap: 30px;
-        flex-wrap: wrap;
+    }
+
+    .access-item {
+        min-width: 100px;
+    }
+
+    .access-item img {
+        width: 65px;
+        height: 65px;
     }
 
     /* フッター */
@@ -559,180 +832,23 @@ main {
     }
 
     .footer-links {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
-    }
-
-    .footer-links a {
-        font-size: 14px;
     }
 
     .footer-menu h3 {
         font-size: 15px;
     }
 
-}
+    /* 豆田町についてページ */
 
-
-/* =========================
-   豆田町についてページ
-========================= */
-
-/* ページタイトル */
-.about-page-title {
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #C8AD91;
-    background-color: #fff;
-}
-
-.about-page-title h1 {
-    font-size: 32px;
-    font-weight: normal;
-    color: #4A3526;
-    letter-spacing: 2px;
-}
-
-
-/* 各セクション */
-.about-section {
-    padding: 40px 5%;
-    border-bottom: 1px solid #C8AD91;
-}
-
-.about-row {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-
-/* 説明文 */
-.about-text {
-    width: 55%;
-}
-
-.about-text h2 {
-    font-size: 26px;
-    font-weight: normal;
-    color: #4A3526;
-    margin-bottom: 15px;
-}
-
-.about-text p {
-    font-size: 15px;
-    line-height: 1.9;
-    margin-bottom: 12px;
-}
-
-
-/* 写真 */
-.about-image {
-    width: 45%;
-    height: 240px;
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-
-/* 歴史セクションの左右を反転 */
-.about-row.reverse {
-    flex-direction: row;
-}
-
-
-/* 町並みの特徴 */
-.section-heading {
-    max-width: 1100px;
-    margin: 0 auto 20px;
-    font-size: 26px;
-    font-weight: normal;
-    color: #4A3526;
-}
-
-.about-intro {
-    max-width: 1100px;
-    margin: 0 auto 25px;
-    font-size: 15px;
-    line-height: 1.9;
-}
-
-
-/* 特徴の写真3枚 */
-.feature-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 25px;
-}
-
-.feature-card {
-    width: 33.333%;
-    border: 1px solid #ddd;
-    background-color: #fff;
-}
-
-.feature-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-}
-
-.feature-card h3 {
-    font-size: 18px;
-    font-weight: normal;
-    color: #4A3526;
-    padding: 15px 15px 5px;
-}
-
-.feature-card p {
-    font-size: 14px;
-    line-height: 1.8;
-    padding: 0 15px 20px;
-}
-
-
-/* 観光スポットボタン */
-.about-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    border: 1px solid #4A3526;
-    color: #4A3526;
-    text-decoration: none;
-    font-size: 14px;
-    background-color: #fff;
-    transition: 0.3s;
-}
-
-.about-button:hover {
-    background-color: #4A3526;
-    color: #fff;
-}
-
-
-/* =========================
-   スマートフォン対応
-========================= */
-@media screen and (max-width: 768px) {
-
-    .about-page-title {
+    .about-page-title,
+    .access-page-title {
         height: 220px;
     }
 
-    .about-page-title h1 {
+    .about-page-title h1,
+    .access-page-title h1 {
         font-size: 26px;
     }
 
@@ -743,12 +859,14 @@ main {
     .about-row,
     .about-row.reverse {
         flex-direction: column;
+        align-items: stretch;
         gap: 20px;
     }
 
     .about-text,
     .about-image {
         width: 100%;
+        flex: auto;
     }
 
     .about-image {
@@ -772,197 +890,15 @@ main {
 
     .feature-card {
         width: 100%;
+        flex: auto;
     }
 
     .feature-card img {
         height: 200px;
     }
-}
 
+    /* アクセスページの地図 */
 
-/* =========================
-   アクセスページ
-========================= */
-
-/* ページタイトル */
-.access-page-title {
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border-bottom: 1px solid #C8AD91;
-}
-
-.access-page-title h1 {
-    font-size: 32px;
-    font-weight: normal;
-    color: #4A3526;
-    letter-spacing: 2px;
-}
-
-
-/* =========================
-   地図
-========================= */
-
-.access-map-section {
-    padding: 30px 5%;
-    background-color: #F5F1E8;
-}
-
-.access-map {
-    max-width: 1100px;
-    height: 300px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.access-map iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-}
-
-
-/* =========================
-   電車・バス・車
-========================= */
-
-.access-method-section {
-    padding: 20px 5%;
-    background-color: #fff;
-}
-
-.access-method {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 25px 5%;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    border-bottom: 1px solid #ddd;
-}
-
-
-/* 左側：アイコンとタイトル */
-.access-method-title {
-    width: 35%;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.access-icon {
-    font-size: 38px;
-}
-
-.access-method-title h2 {
-    font-size: 22px;
-    font-weight: normal;
-    color: #4A3526;
-    white-space: nowrap;
-}
-
-
-/* 右側：説明文 */
-.access-method-text {
-    width: 65%;
-}
-
-.access-method-text p {
-    font-size: 14px;
-    line-height: 1.9;
-    margin-bottom: 8px;
-}
-
-
-/* =========================
-   駐車場のご案内
-========================= */
-
-.parking-section {
-    padding: 30px 5%;
-    background-color: #fff;
-}
-
-.parking-heading {
-    max-width: 1100px;
-    margin: 0 auto 20px;
-    font-size: 24px;
-    font-weight: normal;
-    color: #4A3526;
-    text-align: center;
-}
-
-
-/* 写真と駐車場情報 */
-.parking-container {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-
-/* 駐車場の写真 */
-.parking-image {
-    width: 40%;
-    height: 200px;
-}
-
-.parking-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-
-/* 駐車場の情報 */
-.parking-info {
-    width: 60%;
-}
-
-.parking-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.parking-item h3 {
-    font-size: 15px;
-    font-weight: normal;
-    color: #4A3526;
-}
-
-.parking-item p {
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-
-/* =========================
-   スマートフォン対応
-========================= */
-
-@media screen and (max-width: 768px) {
-
-    /* タイトル */
-    .access-page-title {
-        height: 220px;
-    }
-
-    .access-page-title h1 {
-        font-size: 26px;
-    }
-
-    /* 地図 */
     .access-map-section {
         padding: 20px 5%;
     }
@@ -972,6 +908,7 @@ main {
     }
 
     /* 電車・バス・車 */
+
     .access-method-section {
         padding: 10px 5%;
     }
@@ -985,12 +922,12 @@ main {
 
     .access-method-title {
         width: 100%;
+        flex: auto;
         gap: 15px;
     }
 
     .access-method-title h2 {
         font-size: 20px;
-        white-space: normal;
     }
 
     .access-icon {
@@ -999,21 +936,21 @@ main {
 
     .access-method-text {
         width: 100%;
-    }
-
-    .access-method-text p {
-        font-size: 14px;
+        flex: auto;
     }
 
     /* 駐車場 */
+
     .parking-container {
         flex-direction: column;
+        align-items: stretch;
         gap: 20px;
     }
 
     .parking-image,
     .parking-info {
         width: 100%;
+        flex: auto;
     }
 
     .parking-image {
@@ -1026,11 +963,771 @@ main {
 
     .parking-item {
         flex-wrap: wrap;
-        gap: 5px;
+        gap: 5px 15px;
     }
 
-    .parking-item h3 {
+    .parking-item h3,
+    .parking-item p {
+        font-size: 14px;
+    }
+}
+
+
+/* 電車・バス・車のアイコン画像 */
+
+.access-icon-img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* 駐車場を3つ縦並びにする */
+
+.parking-card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 各駐車場カード */
+
+/* 写真 */
+
+.parking-card-image {
+    width: 40%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.parking-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 駐車場カードの内容を横並びにする */
+
+.parking-card {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    column-gap: 20px;
+    align-items: start;
+}
+
+.parking-card h3 {
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+}
+
+/* スマートフォン */
+
+@media screen and (max-width: 768px) {
+    .parking-card {
+        grid-template-columns: 1fr;
+    }
+
+    .parking-card-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .parking-card h3 {
+        grid-column: auto;
+    }
+}
+
+
+/* ========================================
+   グルメ・お店ページ
+======================================== */
+
+/* メインビジュアル */
+
+.gourmet-hero {
+    position: relative;
+    width: 100%;
+    height: 195px;
+    overflow: hidden;
+    background-color: #4A3526;
+}
+
+.gourmet-hero > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gourmet-hero-text {
+    position: absolute;
+    top: 50%;
+    left: 5.5%;
+    transform: translateY(-50%);
+    color: #fff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.gourmet-hero-text h1 {
+    margin-bottom: 8px;
+    font-family: "Noto Serif JP", serif;
+    font-size: 42px;
+    font-weight: normal;
+}
+
+.gourmet-hero-text p {
+    font-size: 17px;
+}
+
+
+/* カテゴリメニュー */
+
+.gourmet-nav {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    padding: 0 5%;
+    background-color: #F5F1E8;
+    border-bottom: 1px solid #E4D9C8;
+}
+
+.gourmet-nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 250px;
+    min-height: 58px;
+    padding: 10px 15px;
+    color: #4A3526;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.gourmet-nav-item + .gourmet-nav-item {
+    border-left: 1px solid #D8CBB9;
+}
+
+.gourmet-nav-item:hover {
+    background-color: #fff;
+    border-bottom-color: #B08050;
+}
+
+.gourmet-icon {
+    font-size: 24px;
+}
+
+.food-nav .gourmet-icon,
+.food-color {
+    color: #A94F32;
+}
+
+.cafe-nav .gourmet-icon,
+.cafe-color {
+    color: #355781;
+}
+
+.souvenir-nav .gourmet-icon,
+.souvenir-color {
+    color: #58684A;
+}
+
+
+/* 各セクション */
+
+.gourmet-section {
+    width: 90%;
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 25px 0 5px;
+    scroll-margin-top: 20px;
+}
+
+
+/* セクション見出し */
+
+.gourmet-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 14px;
+}
+
+.gourmet-section-heading h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    color: #4A3526;
+    font-family: "Noto Serif JP", serif;
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.gourmet-heading-icon {
+    font-size: 27px;
+}
+
+.gourmet-heading-line {
+    flex: 1;
+    min-width: 10px;
+    height: 1px;
+    background-color: #BDA993;
+}
+
+.gourmet-more {
+    flex-shrink: 0;
+    color: #7A5C43;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.gourmet-more:hover {
+    color: #B08050;
+    text-decoration: underline;
+}
+
+
+/* カード一覧 */
+
+.gourmet-card-container {
+    display: grid;
+    gap: 20px;
+}
+
+.gourmet-two-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gourmet-three-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+
+/* カード本体 */
+
+.gourmet-card {
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.65);
+    border: 1px solid #E5DDD1;
+    border-radius: 5px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.gourmet-card:hover {
+    box-shadow: 0 4px 12px rgba(74, 53, 38, 0.12);
+    transform: translateY(-2px);
+}
+
+.gourmet-card > img {
+    width: 42%;
+    min-width: 0;
+    height: 150px;
+    object-fit: cover;
+}
+
+.gourmet-three-columns .gourmet-card > img {
+    width: 45%;
+    height: 148px;
+}
+
+
+/* カード内の文字 */
+
+.gourmet-card-text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding: 12px 16px;
+}
+
+.gourmet-card-text h3 {
+    margin-bottom: 5px;
+    color: #33251C;
+    font-family: "Noto Serif JP", serif;
+    font-size: 19px;
+    font-weight: normal;
+    overflow-wrap: anywhere;
+}
+
+.gourmet-location {
+    margin-bottom: 5px;
+    color: #536170;
+    font-size: 12px;
+}
+
+.gourmet-card-text p:not(.gourmet-location) {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* ページ背景 */
+
+body:has(.gourmet-hero) {
+    background-color: #FAF7F0;
+}
+
+
+/* ========================================
+   グルメページ：スマートフォン対応
+======================================== */
+
+@media screen and (max-width: 768px) {
+
+    .gourmet-hero {
+        height: 230px;
+    }
+
+    .gourmet-hero-text {
+        right: 5%;
+        left: 5%;
+    }
+
+    .gourmet-hero-text h1 {
+        font-size: 30px;
+    }
+
+    .gourmet-hero-text p {
         font-size: 14px;
     }
 
+    /* カテゴリ */
+
+    .gourmet-nav {
+        padding: 0;
+    }
+
+    .gourmet-nav-item {
+        flex: 1;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
+        min-height: 75px;
+        padding: 8px 3px;
+        font-size: 11px;
+    }
+
+    .gourmet-icon {
+        font-size: 21px;
+    }
+
+    /* セクション */
+
+    .gourmet-section {
+        width: 92%;
+        padding-top: 30px;
+    }
+
+    .gourmet-section-heading {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .gourmet-section-heading h2 {
+        gap: 8px;
+        font-size: 21px;
+    }
+
+    .gourmet-heading-icon {
+        font-size: 23px;
+    }
+
+    .gourmet-heading-line {
+        display: none;
+    }
+
+    .gourmet-more {
+        margin-left: auto;
+        font-size: 12px;
+    }
+
+    /* カード一覧 */
+
+    .gourmet-two-columns,
+    .gourmet-three-columns {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .gourmet-card > img,
+    .gourmet-three-columns .gourmet-card > img {
+        width: 40%;
+        height: 140px;
+    }
+
+    .gourmet-card-text {
+        padding: 10px 12px;
+    }
+
+    .gourmet-card-text h3 {
+        font-size: 17px;
+    }
+
+    .gourmet-card-text p:not(.gourmet-location) {
+        font-size: 13px;
+    }
+
+    .gourmet-location {
+        font-size: 12px;
+    }
+}
+
+
+/* 小型スマートフォン */
+
+@media screen and (max-width: 400px) {
+
+    .gourmet-card > img,
+    .gourmet-three-columns .gourmet-card > img {
+        width: 36%;
+        height: 135px;
+    }
+
+    .gourmet-card-text {
+        padding: 8px;
+    }
+
+    .gourmet-card-text h3 {
+        font-size: 15px;
+    }
+
+    .gourmet-card-text p:not(.gourmet-location) {
+        font-size: 12px;
+    }
+}
+
+/* ========================================
+   10. 和風デザインの共通調整
+   既存レイアウトを維持しながら色・文字を統一
+======================================== */
+
+:root {
+    --color-paper: #F5F0E6;
+    --color-paper-light: #FCFAF5;
+    --color-brown: #4A3526;
+    --color-brown-light: #79634D;
+    --color-gold: #C9A45C;
+    --color-navy: #20282D;
+    --color-line: #D9CBB8;
+    --font-heading: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    --font-body: "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-brown);
+    background-color: var(--color-paper);
+    line-height: 1.9;
+    letter-spacing: 0.025em;
+}
+
+h1, h2, h3, .logo-jp, .footer-brand-text h2 {
+    font-family: var(--font-heading);
+    letter-spacing: 0.06em;
+}
+
+header {
+    background-color: var(--color-paper-light);
+    border-bottom-color: var(--color-line);
+}
+
+.logo-jp {
+    color: var(--color-brown);
+}
+
+.logo-en {
+    color: var(--color-brown-light);
+}
+
+nav a {
+    color: var(--color-brown);
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+    color: #A96A35;
+}
+
+nav a::after {
+    background-color: var(--color-gold);
+}
+
+.button {
+    color: var(--color-brown);
+    background-color: var(--color-gold);
+    border-radius: 30px;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.button:hover {
+    background-color: #B58E48;
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.content-section h2,
+.about-page-title h1,
+.access-page-title h1,
+.about-text h2,
+.section-heading,
+.parking-heading {
+    color: var(--color-brown);
+    font-family: var(--font-heading);
+    font-weight: 500;
+}
+
+.card,
+.feature-card,
+.parking-card,
+.gourmet-card {
+    background-color: var(--color-paper-light);
+    border-color: #E4D9C9;
+    border-radius: 6px;
+}
+
+.map-section,
+.access-map-section {
+    background-color: #EEE7DA;
+}
+
+.about-page-title,
+.access-page-title {
+    background-color: var(--color-paper);
+    border-bottom-color: var(--color-line);
+}
+
+.about-section,
+.access-method {
+    border-bottom-color: var(--color-line);
+}
+
+.access-method-section,
+.parking-section {
+    background-color: var(--color-paper-light);
+}
+
+.access-method-title h2,
+.parking-item h3 {
+    color: var(--color-brown);
+    font-family: var(--font-heading);
+}
+
+.site-footer {
+    color: var(--color-paper);
+    background-color: var(--color-navy);
+}
+
+.footer-brand {
+    border-bottom-color: #65584A;
+}
+
+.footer-brand-text h2,
+.footer-brand-text p,
+.footer-menu h3,
+.footer-links a,
+.footer-bottom {
+    color: var(--color-paper);
+}
+
+.footer-menu {
+    border-bottom-color: #65584A;
+}
+
+.footer-links a::before {
+    color: var(--color-gold);
+}
+
+.footer-links a:hover {
+    color: var(--color-gold);
+}
+
+.gourmet-nav {
+    background-color: var(--color-paper);
+    border-bottom-color: var(--color-line);
+}
+
+.gourmet-nav-item {
+    color: var(--color-brown);
+}
+
+.gourmet-nav-item:hover {
+    background-color: var(--color-paper-light);
+    border-bottom-color: var(--color-gold);
+}
+
+.gourmet-section-heading h2,
+.gourmet-card-text h3 {
+    color: var(--color-brown);
+    font-family: var(--font-heading);
+}
+
+.gourmet-heading-line {
+    background-color: #BDA993;
+}
+
+.gourmet-more {
+    color: var(--color-brown-light);
+}
+
+.gourmet-more:hover {
+    color: #A96A35;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        letter-spacing: 0.015em;
+    }
+
+    .button {
+        padding: 11px 22px;
+    }
+}
+
+/* =====================================================
+   11. 和柄・セクション区切り（レイアウトを変えない装飾）
+   見出しの下線・サイズ変更・要素の移動は行わない
+===================================================== */
+
+/* 全ページ共通：淡い和紙色と控えめな麻の葉風パターン */
+body {
+    background-color: var(--color-paper);
+    background-image:
+        repeating-linear-gradient(45deg,
+            transparent 0 23px,
+            rgba(160, 132, 91, 0.035) 23px 24px,
+            transparent 24px 46px),
+        repeating-linear-gradient(-45deg,
+            transparent 0 23px,
+            rgba(160, 132, 91, 0.035) 23px 24px,
+            transparent 24px 46px),
+        radial-gradient(ellipse at 12% 18%, rgba(201, 164, 92, 0.055), transparent 34%),
+        radial-gradient(ellipse at 88% 72%, rgba(121, 92, 67, 0.035), transparent 38%);
+    background-size: 46px 46px, 46px 46px, auto, auto;
+}
+
+/* 各ページの既存背景色はそのまま使用し、本文の読みやすさを維持 */
+
+/* マップ紹介は背景色のみで区別。模様のサイズは固定し、要素寸法に影響させない */
+.map-section {
+    background-color: #EEE7DA;
+    background-image:
+        radial-gradient(circle, rgba(121, 92, 67, 0.09) 0.8px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* 同じ種類のセクションが連続する場合だけ、境界に飾り線を表示 */
+.content-section + .content-section,
+.about-section + .about-section,
+.gourmet-section + .gourmet-section,
+.access-method + .access-method {
+    background-image:
+        linear-gradient(to right,
+            transparent 0%,
+            rgba(201, 164, 92, 0.52) 18%,
+            rgba(201, 164, 92, 0.52) 82%,
+            transparent 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    background-position: top left;
+}
+
+/* セクションの既存サイズ・余白・配置は変更しない */
+.content-section,
+.about-section,
+.gourmet-section,
+.access-method,
+.parking-section {
+    box-shadow: none;
+}
+
+/* カードは既存のサイズを変えず、色と枠線だけ控えめに統一 */
+.card,
+.feature-card,
+.parking-card,
+.gourmet-card {
+    border-color: #E2D6C5;
+    box-shadow: 0 2px 7px rgba(74, 53, 38, 0.035);
+}
+
+/* フッター：濃紺に青海波風の繰り返し模様 */
+.site-footer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--color-navy);
+}
+
+.site-footer::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 36px;
+    opacity: 0.38;
+    pointer-events: none;
+    background-image: repeating-radial-gradient(
+        circle at 50% 100%,
+        transparent 0 9px,
+        rgba(201, 164, 92, 0.48) 9.5px 10.5px,
+        transparent 11px 18px
+    );
+    background-size: 36px 22px;
+    background-position: bottom center;
+    background-repeat: repeat-x;
+}
+
+.site-footer .footer-container,
+.site-footer .footer-bottom {
+    position: relative;
+    z-index: 1;
+}
+
+/* キーボード操作時のフォーカス表示 */
+nav a:focus-visible,
+.gourmet-nav-item:focus-visible,
+.button:focus-visible,
+.about-button:focus-visible,
+.footer-links a:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 4px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background-size: 36px 36px, 36px 36px, auto, auto;
+    }
+
+    .site-footer::after {
+        height: 28px;
+        opacity: 0.3;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* グルメ・お店ページ：最後のお土産・特産品セクションとフッターの間に余白を確保 */
+body:has(.gourmet-hero) .gourmet-section:last-of-type {
+    padding-bottom: 40px;
 }
