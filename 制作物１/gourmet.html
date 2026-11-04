@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>グルメ・お店｜豆田町</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+
+        <div class="logo">
+            <img src="images/logo.png" alt="豆田町のロゴ">
+
+            <div class="logo-text">
+                <span class="logo-jp">豆田町</span>
+                <span class="logo-en">Mameda Town</span>
+            </div>
+        </div>
+
+        <!-- ナビゲーション -->
+        <nav>
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="about.html">豆田町について</a></li>
+                <li><a href="spot.html">観光スポット</a></li>
+                <li><a href="gourmet.html" aria-current="page">グルメ・お店</a></li>
+                <li><a href="map.html">3Dマップ</a></li>
+                <li><a href="access.html">アクセス</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- メインビジュアル -->
+        <section class="gourmet-hero">
+
+            <img src="images/gourmet-main.jpg" alt="豆田町の歴史ある町並み">
+
+            <div class="gourmet-hero-text">
+                <h1>グルメ・お店</h1>
+                <p>町歩きの途中で出会う、日田のおいしいもの。</p>
+            </div>
+
+        </section>
+
+
+        <!-- カテゴリメニュー -->
+        <nav class="gourmet-nav" aria-label="グルメのカテゴリー">
+
+            <a href="#gourmet-food" class="gourmet-nav-item food-nav">
+                <span class="gourmet-icon">♨</span>
+                <span>おすすめグルメ</span>
+            </a>
+
+            <a href="#gourmet-cafe" class="gourmet-nav-item cafe-nav">
+                <span class="gourmet-icon">☕</span>
+                <span>カフェ・スイーツ</span>
+            </a>
+
+            <a href="#gourmet-souvenir" class="gourmet-nav-item souvenir-nav">
+                <span class="gourmet-icon">♧</span>
+                <span>お土産・特産品</span>
+            </a>
+
+        </nav>
+
+
+        <!-- おすすめグルメ -->
+        <section class="gourmet-section" id="gourmet-food">
+
+            <div class="gourmet-section-heading">
+                <h2>
+                    <span class="gourmet-heading-icon food-color">♨</span>
+                    おすすめグルメ
+                </h2>
+
+                <span class="gourmet-heading-line"></span>
+
+                <a href="#gourmet-food-list" class="gourmet-more">
+                    もっと見る →
+                </a>
+            </div>
+
+            <div class="gourmet-card-container gourmet-two-columns" id="gourmet-food-list">
+
+                <!-- 海鮮丼 -->
+                <article class="gourmet-card">
+
+                    <img src="images/gourmet-bowl.jpg" alt="海鮮丼">
+
+                    <div class="gourmet-card-text">
+                        <h3>BOWL</h3>
+
+                        <p class="gourmet-location">📍 豆田町</p>
+
+                        <p>彩り豊かな料理を楽しみながら、町歩きの合間にランチ。</p>
+                    </div>
+
+                </article>
+
+
+                <!-- そば -->
+                <article class="gourmet-card">
+
+                    <img src="images/gourmet-soba.jpg" alt="そば料理">
+
+                    <div class="gourmet-card-text">
+                        <h3>そば料理</h3>
+
+                        <p class="gourmet-location">📍 豆田町</p>
+
+                        <p>町歩きの合間に味わう、落ち着いた食事。</p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- カフェ・スイーツ -->
+        <section class="gourmet-section" id="gourmet-cafe">
+
+            <div class="gourmet-section-heading">
+                <h2>
+                    <span class="gourmet-heading-icon cafe-color">☕</span>
+                    カフェ・スイーツ
+                </h2>
+
+                <span class="gourmet-heading-line"></span>
+
+                <a href="#gourmet-cafe-list" class="gourmet-more">
+                    もっと見る →
+                </a>
+            </div>
+
+            <div class="gourmet-card-container gourmet-three-columns" id="gourmet-cafe-list">
+
+                <!-- カフェ -->
+                <article class="gourmet-card">
+
+                    <img src="images/gourmet-cafe.jpg" alt="カフェのコーヒーとケーキ">
+
+                    <div class="gourmet-card-text">
+                        <h3>町並みカフェ</h3>
+
+                        <p class="gourmet-location">📍 豆田町</p>
+
+                        <p>古い町並みを眺めながら、ゆったりと。</p>
+                    </div>
+
+                </article>
+
+
+                <!-- ロールケーキ -->
+                <article class="gourmet-card">
+
+                    <img src="images/gourmet-rollcake.jpg" alt="ロールケーキ">
+
+                    <div class="gourmet-card-text">
+                        <h3>豆田のスイーツ</h3>
+
+                        <p class="gourmet-location">📍 豆田町</p>
+
+                        <p>散策の休憩に楽しみたい、やさしい甘さのお菓子。</p>
+                    </div>
+
+                </article>
+
+
+                <!-- 和菓子 -->
+                <article class="gourmet-card">
+
+                    <img src="images/gourmet-wagashi.jpg" alt="季節の和菓子">
+
+                    <div class="gourmet-card-text">
+                        <h3>和菓子</h3>
+
+                        <p class="gourmet-location">📍 豆田町</p>
+
+                        <p>季節を感じる、見た目も美しい和菓子。</p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- お土産・特産品 -->
+        <section class="gourmet-section" id="gourmet-souvenir">
+
+            <div class="gourmet-section-heading">
+                <h2>
+                    <span class="gourmet-heading-icon souvenir-color">♧</span>
+                    お土産・特産品
+                </h2>
+
+                <span class="gourmet-heading-line"></span>
+
+                <a href="#gourmet-souvenir-list" class="gourmet-more">
+                    もっと見る →
+                </a>
+            </div>
+
+            <div class="gourmet-card-container gourmet-two-columns" id="gourmet-souvenir-list">
+
+                <!-- 酒蔵 -->
+                <article class="gourmet-card">
+
+                    <img src="images/gourmet-sake.jpg" alt="日田の酒蔵と日本酒">
+
+                    <div class="gourmet-card-text">
+                        <h3>クンチョウ酒造</h3>
+
+                        <p class="gourmet-location">📍 豆田町</p>
+
+                        <p>歴史ある酒蔵で、日田の酒文化に触れる。</p>
+                    </div>
+
+                </article>
+
+
+                <!-- 特産品 -->
+                <article class="gourmet-card">
+
+                    <img src="images/gourmet-specialty.jpg" alt="日田の醤油や味噌などの特産品">
+
+                    <div class="gourmet-card-text">
+                        <h3>日田の特産品</h3>
+
+                        <p class="gourmet-location">📍 豆田町</p>
+
+                        <p>醤油・味噌など、日田ならではの味をお土産に。</p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- フッター -->
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <img src="images/logo.png" alt="">
+
+                <div class="footer-brand-text">
+                    <h2>豆田町</h2>
+                    <p>歴史ある町並みを歩く。</p>
+                </div>
+
+            </div>
+
+
+            <div class="footer-menu">
+
+                <h3>サイトメニュー</h3>
+
+                <div class="footer-links">
+
+                    <ul>
+                        <li><a href="index.html">トップページ</a></li>
+                        <li><a href="about.html">豆田町について</a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="spot.html">観光スポット</a></li>
+                        <li><a href="map.html">3Dマップ</a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="gourmet.html">グルメ・お店</a></li>
+                        <li><a href="access.html">アクセス</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>歴史ある町並みと、ここで出会うおいしいもの。</p>
+            <p>&copy; 豆田町観光紹介サイト</p>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
