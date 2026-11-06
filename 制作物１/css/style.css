@@ -668,67 +668,6 @@ nav a[aria-current="page"]::after {
     line-height: 1.9;
 }
 
-/* 駐車場 */
-
-.parking-section {
-    padding: 30px 5%;
-    background-color: #fff;
-}
-
-.parking-heading {
-    max-width: 1100px;
-    margin: 0 auto 20px;
-    color: #4A3526;
-    font-size: 24px;
-    font-weight: normal;
-    text-align: center;
-}
-
-.parking-container {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.parking-image {
-    flex: 4;
-    min-width: 0;
-    height: 200px;
-}
-
-.parking-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.parking-info {
-    flex: 6;
-    min-width: 0;
-}
-
-.parking-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.parking-item h3 {
-    color: #4A3526;
-    font-size: 15px;
-    font-weight: normal;
-}
-
-.parking-item p {
-    font-size: 14px;
-}
-
-
 /* ========================================
    9. スマートフォン対応
 ======================================== */
@@ -938,38 +877,6 @@ nav a[aria-current="page"]::after {
         width: 100%;
         flex: auto;
     }
-
-    /* 駐車場 */
-
-    .parking-container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 20px;
-    }
-
-    .parking-image,
-    .parking-info {
-        width: 100%;
-        flex: auto;
-    }
-
-    .parking-image {
-        height: 220px;
-    }
-
-    .parking-heading {
-        font-size: 22px;
-    }
-
-    .parking-item {
-        flex-wrap: wrap;
-        gap: 5px 15px;
-    }
-
-    .parking-item h3,
-    .parking-item p {
-        font-size: 14px;
-    }
 }
 
 
@@ -981,65 +888,6 @@ nav a[aria-current="page"]::after {
     object-fit: contain;
     flex-shrink: 0;
 }
-
-/* 駐車場を3つ縦並びにする */
-
-.parking-card-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* 各駐車場カード */
-
-/* 写真 */
-
-.parking-card-image {
-    width: 40%;
-    height: 180px;
-    overflow: hidden;
-}
-
-.parking-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* 駐車場カードの内容を横並びにする */
-
-.parking-card {
-    display: grid;
-    grid-template-columns: 40% 1fr;
-    column-gap: 20px;
-    align-items: start;
-}
-
-.parking-card h3 {
-    grid-column: 1 / -1;
-    margin-bottom: 12px;
-}
-
-/* スマートフォン */
-
-@media screen and (max-width: 768px) {
-    .parking-card {
-        grid-template-columns: 1fr;
-    }
-
-    .parking-card-image {
-        width: 100%;
-        height: 200px;
-    }
-
-    .parking-card h3 {
-        grid-column: auto;
-    }
-}
-
 
 /* ========================================
    グルメ・お店ページ
@@ -1731,3 +1579,263 @@ nav a:focus-visible,
 body:has(.gourmet-hero) .gourmet-section:last-of-type {
     padding-bottom: 40px;
 }
+
+
+
+
+/* ========================================
+   グルメ・お店ページ：カードデザイン改善
+======================================== */
+
+/* カード一覧 */
+.gourmet-card-container {
+    gap: 24px;
+}
+
+/* カード本体 */
+.gourmet-card {
+    align-items: stretch;
+    min-height: 190px;
+    border-radius: 8px;
+    background-color: #FCFAF5;
+    border: 1px solid #E2D6C5;
+    box-shadow: 0 3px 10px rgba(74, 53, 38, 0.06);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* マウスを合わせたとき */
+.gourmet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 18px rgba(74, 53, 38, 0.12);
+}
+
+/* 写真 */
+.gourmet-card > img {
+    width: 42%;
+    height: auto;
+    min-height: 180px;
+    align-self: stretch;
+    object-fit: cover;
+}
+
+/* 3店舗並びの写真 */
+.gourmet-three-columns .gourmet-card > img {
+    width: 42%;
+    height: auto;
+}
+
+/* カード内の文章 */
+.gourmet-card-text {
+    justify-content: flex-start;
+    padding: 18px;
+}
+
+/* 店名 */
+.gourmet-card-text h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    line-height: 1.7;
+    font-weight: 500;
+    overflow-wrap: break-word;
+}
+
+/* 所在地 */
+.gourmet-location {
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #80694F;
+}
+
+/* 紹介文 */
+.gourmet-card-text p:not(.gourmet-location) {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #554B42;
+}
+
+/* スマートフォン */
+@media screen and (max-width: 768px) {
+
+    .gourmet-card {
+        min-height: 160px;
+    }
+
+    .gourmet-card > img,
+    .gourmet-three-columns .gourmet-card > img {
+        width: 40%;
+        min-height: 160px;
+    }
+
+    .gourmet-card-text {
+        padding: 12px;
+    }
+
+    .gourmet-card-text h3 {
+        font-size: 17px;
+    }
+}
+
+/* ========================================
+   アクセスページ：駐車場のご案内
+======================================== */
+
+/* 駐車場セクション */
+.parking-section {
+    padding: 40px 5%;
+    background-color: var(--color-paper-light, #FCFAF5);
+}
+
+/* セクション見出し */
+.parking-heading {
+    max-width: 1000px;
+    margin: 0 auto 25px;
+    color: var(--color-brown, #4A3526);
+    font-family: var(--font-heading, "Noto Serif JP", serif);
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* 駐車場カード一覧 */
+.parking-card-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 各駐車場カード */
+.parking-card {
+    display: grid;
+    grid-template-columns: minmax(220px, 38%) minmax(0, 1fr);
+    grid-template-areas:
+        "title title"
+        "image description"
+        "image details";
+    column-gap: 24px;
+    row-gap: 12px;
+    align-items: start;
+    padding: 22px;
+    background-color: var(--color-paper-light, #FCFAF5);
+    border: 1px solid #E2D6C5;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(74, 53, 38, 0.06);
+}
+
+/* 駐車場名 */
+.parking-card h3 {
+    grid-area: title;
+    margin: 0;
+    color: var(--color-brown, #4A3526);
+    font-family: var(--font-heading, "Noto Serif JP", serif);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* 写真 */
+.parking-card-image {
+    grid-area: image;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.parking-card-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 駐車場の紹介文 */
+.parking-description {
+    grid-area: description;
+    margin: 0;
+    color: #554B42;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* 料金・台数・住所などの詳細 */
+.parking-details {
+    grid-area: details;
+    margin: 0;
+}
+
+.parking-details > div {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-line, #E2D6C5);
+}
+
+.parking-details dt {
+    color: #80694F;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.parking-details dd {
+    margin: 0;
+    color: #554B42;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* タブレット・スマートフォン */
+@media screen and (max-width: 768px) {
+    .parking-section {
+        padding: 30px 5%;
+    }
+
+    .parking-heading {
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+
+    .parking-card {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "title"
+            "image"
+            "description"
+            "details";
+        row-gap: 12px;
+        padding: 18px;
+    }
+
+    .parking-card h3 {
+        font-size: 18px;
+    }
+
+    .parking-card-image {
+        height: 210px;
+    }
+
+    .parking-description {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .parking-card {
+        padding: 14px;
+    }
+
+    .parking-card-image {
+        height: 180px;
+    }
+
+    .parking-details > div {
+        grid-template-columns: 78px minmax(0, 1fr);
+        gap: 8px;
+    }
+}
+
